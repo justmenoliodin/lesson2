@@ -32,7 +32,6 @@ body {
 
 .block_cards {
     margin-top: 25px;
-    
 }
 
 .card {
@@ -48,6 +47,7 @@ img {
     border-radius: 10px;
     object-fit: cover;
     margin-bottom: 20px;
+    transition: transform 2s ease;
 }
 
 .card .name {
@@ -65,3 +65,64 @@ img {
     font-size: 16px;
     margin-top: 5px;
 }
+
+.card img:hover {
+    /* transform: scale(1.5); */
+    position: relative;
+}
+
+
+.card-about {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0);
+    transition: 
+        opacity 0.33s ease-in-out,
+        transform 0.33s ease-in-out;
+
+}
+
+.card-about__image {
+    width: 300px;
+    height: 400px;
+}
+
+.card-about__text {
+    padding: 60px;
+    width: 500px;
+    background-color: rgb(52, 50, 50, 0.8);
+}
+
+.card-about__author {
+}
+.ceo {
+    display: block;
+}
+
+.card:hover .card-about{
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: all;
+}
+
+/* Когда мышь над блоком с карточками */
+.block_cards:hover .card:not(:hover) {
+    filter: blur(5px) brightness(0.5);
+    transition: filter 0.3s ease;
+}
+
+/* А неактивная карточка не должна реагировать на клики */
+.block_cards:hover .card:not(:hover) * {
+    pointer-events: none;
+}
+
